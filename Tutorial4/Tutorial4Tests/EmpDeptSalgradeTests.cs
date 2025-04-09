@@ -103,7 +103,7 @@ public class EmpDeptSalgradeTests
         var emps = Database.GetEmps();
         var grades = Database.GetSalgrades();
 
-         var result = emps.Join(grades, emp =>emp.Sal, salgrade => salgrade.Losal, (e,s) =>new {e,s}).
+         var result = emps.Join(grades, emp =>true, salgrade => true, (e,s) =>new {e,s}).
                             Where(es =>es.e.Sal>=es.s.Losal && es.e.Sal<=es.s.Hisal ).
                             Select(es=> new {es.e.EName,es.s.Grade});
         
